@@ -1,58 +1,61 @@
 import Link from "next/link"
 import Image from "next/image"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { ArrowRight, Briefcase, TrendingUp } from "lucide-react"
+import { Briefcase, LineChart, Building2 } from "lucide-react"
 
-const businessCalculators = [
+const calculators = [
   {
     title: "Business Loan Calculator",
     description: "Calculate payments and interest for business financing.",
+    icon: <Briefcase className="h-6 w-6 text-primary" />,
     link: "/business-loan-calculator",
-    icon: <Briefcase className="h-8 w-8 text-primary" />,
   },
   {
     title: "Investment Return Calculator",
     description: "Analyze the potential return on your investments.",
+    icon: <LineChart className="h-6 w-6 text-primary" />,
     link: "/investment-return-calculator",
-    icon: <TrendingUp className="h-8 w-8 text-primary" />,
+  },
+  {
+    title: "House Hacking Analyzer",
+    description: "Analyze multi-unit properties for investment potential.",
+    icon: <Building2 className="h-6 w-6 text-primary" />,
+    link: "/house-hacking-calculator",
   },
 ]
 
 export default function BusinessInvestmentPage() {
   return (
     <div className="container mx-auto py-12 px-4">
-      <div className="relative rounded-xl overflow-hidden mb-12">
-        <Image
-          src="/business-investment-hero.png"
-          alt="Business and investment planning"
-          width={1200}
-          height={400}
-          className="w-full h-auto object-cover"
-        />
-        <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center text-center text-white p-4">
-          <h1 className="text-4xl md:text-5xl font-bold">Business & Investment Calculators</h1>
-          <p className="text-lg mt-2 max-w-2xl">
-            Forecast growth and analyze returns. Tools designed for CEOs, founders, and savvy investors.
-          </p>
+      <header className="text-center mb-12">
+        <div className="relative w-full h-64 md:h-80 mb-8 rounded-lg overflow-hidden shadow-lg">
+          <Image
+            src="/business-investment-hero.png"
+            alt="Business investment planning"
+            layout="fill"
+            objectFit="cover"
+            className="transform hover:scale-105 transition-transform duration-500"
+          />
+          <div className="absolute inset-0 bg-black bg-opacity-30" />
         </div>
-      </div>
-
-      <div className="grid md:grid-cols-3 gap-8">
-        {businessCalculators.map((calc) => (
-          <Card key={calc.title} className="flex flex-col hover:shadow-lg transition-shadow">
-            <CardHeader className="flex-row items-center gap-4">
-              {calc.icon}
-              <CardTitle>{calc.title}</CardTitle>
-            </CardHeader>
-            <CardContent className="flex-grow">
-              <p className="text-muted-foreground">{calc.description}</p>
-            </CardContent>
-            <div className="p-6 pt-0">
-              <Link href={calc.link} className="text-sm font-semibold text-primary hover:underline flex items-center">
-                Use Calculator <ArrowRight className="ml-1 h-4 w-4" />
-              </Link>
-            </div>
-          </Card>
+        <h1 className="text-4xl font-bold">Business & Investment Calculators</h1>
+        <p className="text-lg text-muted-foreground mt-2">
+          Forecast growth, analyze returns, and make savvy investment decisions.
+        </p>
+      </header>
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {calculators.map((calc) => (
+          <Link key={calc.title} href={calc.link} className="block">
+            <Card className="h-full hover:border-primary transition-colors duration-300 ease-in-out transform hover:-translate-y-1">
+              <CardHeader className="flex-row items-center gap-4">
+                {calc.icon}
+                <CardTitle>{calc.title}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">{calc.description}</p>
+              </CardContent>
+            </Card>
+          </Link>
         ))}
       </div>
     </div>

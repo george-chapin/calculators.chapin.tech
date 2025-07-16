@@ -1,64 +1,61 @@
 import Link from "next/link"
 import Image from "next/image"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { ArrowRight, Car, GraduationCap, Sun } from "lucide-react"
+import { Car, GraduationCap, Umbrella } from "lucide-react"
 
-const personalFinanceCalculators = [
+const calculators = [
   {
     title: "Car Loan Calculator",
-    description: "Estimate your monthly car payments and total interest.",
+    description: "Estimate your monthly car payment and total interest.",
+    icon: <Car className="h-6 w-6 text-primary" />,
     link: "/car-calculator",
-    icon: <Car className="h-8 w-8 text-primary" />,
   },
   {
     title: "College Savings Calculator",
     description: "Plan and save for future education expenses.",
+    icon: <GraduationCap className="h-6 w-6 text-primary" />,
     link: "/college-savings-calculator",
-    icon: <GraduationCap className="h-8 w-8 text-primary" />,
   },
   {
     title: "Retirement Calculator",
-    description: "Determine if you're on track for a secure retirement.",
+    description: "Determine if you are on track to meet your retirement goals.",
+    icon: <Umbrella className="h-6 w-6 text-primary" />,
     link: "/retirement-calculator",
-    icon: <Sun className="h-8 w-8 text-primary" />,
   },
 ]
 
 export default function PersonalFinancePage() {
   return (
     <div className="container mx-auto py-12 px-4">
-      <div className="relative rounded-xl overflow-hidden mb-12">
-        <Image
-          src="/piggy-bank-coins-planning.png"
-          alt="Personal finance planning"
-          width={1200}
-          height={400}
-          className="w-full h-auto object-cover"
-        />
-        <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center text-center text-white p-4">
-          <h1 className="text-4xl md:text-5xl font-bold">Personal Finance Calculators</h1>
-          <p className="text-lg mt-2 max-w-2xl">
-            Plan for life's biggest milestones. Calculate car payments, save for college, and secure your retirement.
-          </p>
+      <header className="text-center mb-12">
+        <div className="relative w-full h-64 md:h-80 mb-8 rounded-lg overflow-hidden shadow-lg">
+          <Image
+            src="/piggy-bank-coins-planning.png"
+            alt="Personal finance planning"
+            layout="fill"
+            objectFit="cover"
+            className="transform hover:scale-105 transition-transform duration-500"
+          />
+          <div className="absolute inset-0 bg-black bg-opacity-30" />
         </div>
-      </div>
-
-      <div className="grid md:grid-cols-3 gap-8">
-        {personalFinanceCalculators.map((calc) => (
-          <Card key={calc.title} className="flex flex-col hover:shadow-lg transition-shadow">
-            <CardHeader className="flex-row items-center gap-4">
-              {calc.icon}
-              <CardTitle>{calc.title}</CardTitle>
-            </CardHeader>
-            <CardContent className="flex-grow">
-              <p className="text-muted-foreground">{calc.description}</p>
-            </CardContent>
-            <div className="p-6 pt-0">
-              <Link href={calc.link} className="text-sm font-semibold text-primary hover:underline flex items-center">
-                Use Calculator <ArrowRight className="ml-1 h-4 w-4" />
-              </Link>
-            </div>
-          </Card>
+        <h1 className="text-4xl font-bold">Personal Finance Calculators</h1>
+        <p className="text-lg text-muted-foreground mt-2">
+          Plan for life's biggest milestones and secure your financial future.
+        </p>
+      </header>
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {calculators.map((calc) => (
+          <Link key={calc.title} href={calc.link} className="block">
+            <Card className="h-full hover:border-primary transition-colors duration-300 ease-in-out transform hover:-translate-y-1">
+              <CardHeader className="flex-row items-center gap-4">
+                {calc.icon}
+                <CardTitle>{calc.title}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">{calc.description}</p>
+              </CardContent>
+            </Card>
+          </Link>
         ))}
       </div>
     </div>
