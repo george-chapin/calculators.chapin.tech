@@ -20,7 +20,7 @@ interface Debt {
   payment: string
 }
 
-export default function CashOutRefinanceCalculator() {
+export function CashOutRefinanceCalculator() {
   // Loan & Home Details
   const [homeValue, setHomeValue] = useState("500000")
   const [currentMortgageBalance, setCurrentMortgageBalance] = useState("250000")

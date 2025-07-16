@@ -19,7 +19,7 @@ import { useToast } from "@/components/ui/use-toast"
 import jsPDF from "jspdf"
 import autoTable from "jspdf-autotable"
 
-export default function HouseHackingCalculator() {
+export function HouseHackingCalculator() {
   const { toast } = useToast()
   // --- INPUTS ---
   const [purchasePrice, setPurchasePrice] = useState("500000")
