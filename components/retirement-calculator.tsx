@@ -10,7 +10,7 @@ import { Landmark, TrendingUp, Target } from "lucide-react"
 import { formatCurrency } from "@/utils/format-currency"
 import { cn } from "@/lib/utils"
 
-export default function RetirementCalculator() {
+export function RetirementCalculator() {
   // User Inputs
   const [currentAge, setCurrentAge] = useState(30)
   const [retirementAge, setRetirementAge] = useState(65)

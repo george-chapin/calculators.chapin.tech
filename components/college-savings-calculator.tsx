@@ -10,7 +10,7 @@ import { GraduationCap, Target, TrendingUp } from "lucide-react"
 import { formatCurrency } from "@/utils/format-currency"
 import { cn } from "@/lib/utils"
 
-export default function CollegeSavingsCalculator() {
+export function CollegeSavingsCalculator() {
   // Inputs
   const [childsAge, setChildsAge] = useState(5)
   const [collegeStartAge, setCollegeStartAge] = useState(18)

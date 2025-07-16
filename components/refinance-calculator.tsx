@@ -9,7 +9,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsive
 import { Repeat, TrendingDown, TrendingUp, Milestone } from "lucide-react"
 import { formatCurrency } from "@/utils/format-currency"
 
-export default function RefinanceCalculator() {
+export function RefinanceCalculator() {
   // Current Mortgage
   const [currentBalance, setCurrentBalance] = useState("250000")
   const [currentPayment, setCurrentPayment] = useState("1450") // P&I only

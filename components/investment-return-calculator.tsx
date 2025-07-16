@@ -9,7 +9,7 @@ import { DollarSign, TrendingUp, Percent, CalendarClock } from "lucide-react"
 import { formatCurrency } from "@/utils/format-currency"
 import { cn } from "@/lib/utils"
 
-export default function InvestmentReturnCalculator() {
+export function InvestmentReturnCalculator() {
   // Inputs
   const [initialInvestment, setInitialInvestment] = useState("10000")
   const [finalValue, setFinalValue] = useState("15000")

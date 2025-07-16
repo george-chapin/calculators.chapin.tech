@@ -24,7 +24,7 @@ import { useToast } from "@/components/ui/use-toast"
 import jsPDF from "jspdf"
 import autoTable from "jspdf-autotable"
 
-export default function RentVsBuyCalculator() {
+export function RentVsBuyCalculator() {
   const { toast } = useToast()
   // --- INPUTS ---
   // Buy Inputs

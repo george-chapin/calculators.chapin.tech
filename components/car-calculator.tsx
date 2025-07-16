@@ -11,7 +11,7 @@ import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Legend } from "recha
 import { Car } from "lucide-react"
 import { cn } from "@/lib/utils"
 
-export default function CarCalculator() {
+export function CarCalculator() {
   const [vehiclePrice, setVehiclePrice] = useState("35000")
   const [downPayment, setDownPayment] = useState("5000")
   const [tradeInValue, setTradeInValue] = useState("10000")

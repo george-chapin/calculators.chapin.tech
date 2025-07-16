@@ -16,7 +16,7 @@ import Link from "next/link"
 
 type LoanType = "term" | "sba" | "loc"
 
-export default function BusinessLoanCalculator() {
+export function BusinessLoanCalculator() {
   // --- INPUTS ---
   const [loanAmount, setLoanAmount] = useState("100000")
   const [interestRate, setInterestRate] = useState("8.5")

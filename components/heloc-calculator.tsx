@@ -9,7 +9,7 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } fro
 import { PiggyBank } from "lucide-react"
 import { formatCurrency } from "@/utils/format-currency"
 
-export default function HelocCalculator() {
+export function HelocCalculator() {
   const [homeValue, setHomeValue] = useState("450000")
   const [mortgageBalance, setMortgageBalance] = useState("200000")
   const [ltvRatio, setLtvRatio] = useState(80)

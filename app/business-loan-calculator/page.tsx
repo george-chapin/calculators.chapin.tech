@@ -1,9 +1,28 @@
-import BusinessLoanCalculator from "@/components/business-loan-calculator"
+import { BusinessLoanCalculator } from "@/components/business-loan-calculator"
+import Image from "next/image"
 
 export default function BusinessLoanCalculatorPage() {
   return (
-    <main className="bg-background text-foreground w-full flex items-center justify-center p-4 pt-10">
-      <BusinessLoanCalculator />
-    </main>
+    <div className="container mx-auto py-12 px-4">
+      <header className="text-center mb-12">
+        <div className="relative w-full h-64 md:h-80 mb-8 rounded-lg overflow-hidden shadow-lg">
+          <Image
+            src="/business-loan-hero.png"
+            alt="A small business storefront with a 'Funded' sign, showing growth charts"
+            layout="fill"
+            objectFit="cover"
+            className="transform hover:scale-105 transition-transform duration-500"
+          />
+          <div className="absolute inset-0 bg-black bg-opacity-30" />
+        </div>
+        <h1 className="text-4xl font-bold">Business Loan Calculator</h1>
+        <p className="text-lg text-muted-foreground mt-2 max-w-2xl mx-auto">
+          Calculate monthly payments and total interest for your business loan.
+        </p>
+      </header>
+      <main className="flex justify-center">
+        <BusinessLoanCalculator />
+      </main>
+    </div>
   )
 }
