@@ -1,71 +1,90 @@
 import Link from "next/link"
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
-import { ArrowRight } from "lucide-react"
+import Image from "next/image"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Home, PiggyBank, Briefcase, ArrowRight, Mail } from "lucide-react"
+
+const calculatorGroups = [
+  {
+    title: "Home & Real Estate",
+    description:
+      "Navigate the property market with confidence. Whether you're calculating your first mortgage, exploring refinancing options, or analyzing the profitability of a rental property, our tools provide the essential data for your real estate journey.",
+    icon: <Home className="h-8 w-8 text-primary" />,
+    link: "/home-real-estate",
+    image: "/real-estate-graphic.png",
+  },
+  {
+    title: "Personal Finance",
+    description:
+      "Take control of your financial future. From creating a debt payoff plan and building an emergency fund to planning for college and a comfortable retirement, these calculators empower you to manage your money effectively and achieve your life goals.",
+    icon: <PiggyBank className="h-8 w-8 text-primary" />,
+    link: "/personal-finance",
+    image: "/personal-finance-graphic.png",
+  },
+  {
+    title: "Business & Investment",
+    description:
+      "Drive growth and maximize returns with powerful analytical tools. Forecast loan payments, calculate investment returns, and track your net worth. Essential for entrepreneurs, investors, and anyone serious about building wealth.",
+    icon: <Briefcase className="h-8 w-8 text-primary" />,
+    link: "/business-investment",
+    image: "/business-graphic.png",
+  },
+  {
+    title: "Marketing",
+    description:
+      "Measure what matters and optimize your campaign performance. Calculate key metrics like open rates, click-through rates, and ROI to understand the true impact of your email marketing efforts and make data-driven decisions.",
+    icon: <Mail className="h-8 w-8 text-primary" />,
+    link: "/marketing-calculators",
+    image: "/marketing-graphic.png",
+  },
+]
 
 export default function HomePage() {
   return (
-    <div className="flex flex-col min-h-[100dvh] bg-background">
-      <main className="flex-1">
-        <section className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center space-y-4 text-center">
-              <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-                Your Financial Clarity Hub
-              </h1>
-              <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
-                A comprehensive suite of free, powerful calculators designed to help you navigate your financial journey
-                with confidence. From mortgages to retirement, we've got you covered.
-              </p>
-            </div>
-          </div>
-        </section>
+    <div className="bg-background">
+      <div className="container mx-auto py-16 sm:py-24 px-4">
+        <header className="text-center mb-16">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter">
+            Master Your Money with Precision
+          </h1>
+          <p className="text-lg text-muted-foreground mt-4 max-w-3xl mx-auto">
+            From planning your first home purchase to optimizing your retirement strategy, our comprehensive suite of
+            financial calculators provides the clarity you need to make confident decisions.
+          </p>
+        </header>
 
-        <section className="w-full pb-12 md:pb-24 lg:pb-32 bg-muted">
-          <div className="container px-4 md:px-6">
-            <div className="grid gap-8 md:grid-cols-2">
-              <CalculatorCategoryCard
-                title="Personal Finance"
-                description="Master your money with tools for budgeting, debt management, and savings. Plan for your future, from college savings to a secure retirement."
-                href="/personal-finance"
-              />
-              <CalculatorCategoryCard
-                title="Home & Real Estate"
-                description="Navigate the property market with ease. Whether you're buying, selling, or investing, our calculators help you understand mortgages, refinancing, and rental profitability."
-                href="/home-real-estate"
-              />
-              <CalculatorCategoryCard
-                title="Business & Investment"
-                description="Make smarter financial decisions for your business and portfolio. Analyze loan options, project investment returns, and track your net worth."
-                href="/business-investment"
-              />
-              <CalculatorCategoryCard
-                title="Marketing"
-                description="Optimize your campaigns with data-driven insights. Calculate key metrics like ROI, open rates, and conversion rates to maximize your marketing impact."
-                href="/marketing-calculators"
-              />
-            </div>
-          </div>
-        </section>
-      </main>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+          {calculatorGroups.map((group) => (
+            <Card
+              key={group.title}
+              className="flex flex-col overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 border-border/50 group"
+            >
+              <CardHeader className="flex-row items-start gap-4 p-6">
+                <div className="bg-primary/10 p-3 rounded-lg">{group.icon}</div>
+                <div className="flex-1">
+                  <CardTitle className="text-2xl font-semibold">{group.title}</CardTitle>
+                </div>
+              </CardHeader>
+              <CardContent className="flex flex-col flex-grow p-6 pt-0">
+                <div className="relative h-52 w-full mb-6 rounded-xl overflow-hidden">
+                  <Image
+                    src={group.image || "/placeholder.svg"}
+                    alt={`${group.title} graphic`}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <p className="text-muted-foreground flex-grow mb-6">{group.description}</p>
+                <Button asChild className="mt-auto w-full text-lg py-6">
+                  <Link href={group.link}>
+                    View Calculators <ArrowRight className="ml-2 h-5 w-5" />
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
     </div>
-  )
-}
-
-function CalculatorCategoryCard({ title, description, href }: { title: string; description: string; href: string }) {
-  return (
-    <Link href={href} className="group">
-      <Card className="h-full transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2 bg-card">
-        <CardHeader>
-          <CardTitle className="text-2xl font-bold">{title}</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p className="text-muted-foreground mb-4">{description}</p>
-          <div className="flex items-center font-semibold text-primary">
-            Explore Calculators
-            <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-          </div>
-        </CardContent>
-      </Card>
-    </Link>
   )
 }
